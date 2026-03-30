@@ -9,43 +9,33 @@ export default function Navigation() {
   const isActive = (path: string) => pathname === path;
 
   const navLinks = [
-    { path: '/', label: 'Home' },
-    { path: '/event-schedule', label: 'Event Schedule' },
-    { path: '/lucky-draw', label: 'Lucky Draw Prize' },
-    { path: '/photos', label: 'Photos' },
-    { path: '/translation', label: 'Translation' },
-    { path: '/seating-plan', label: 'Seating Plan' },
+    { path: '/', label: 'Home', icon: '⌂' },
+    { path: '/event-schedule', label: 'Schedule', icon: '◷' },
+    { path: '/lucky-draw', label: 'Lucky', icon: '✦' },
+    { path: '/photos', label: 'Photos', icon: '▣' },
+    { path: '/translation', label: 'Translate', icon: '文' },
+    { path: '/seating-plan', label: 'Seats', icon: '◎' },
   ];
 
   return (
-    <nav className="bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-white font-bold text-2xl">
-            Annual Dinner 2026
-          </Link>
-          <div className="hidden md:flex gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                href={link.path}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  isActive(link.path)
-                    ? 'bg-white text-blue-600'
-                    : 'text-white hover:bg-white hover:bg-opacity-10'
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-          <div className="md:hidden">
-            <button className="text-white hover:bg-white hover:bg-opacity-10 px-3 py-2 rounded">
-              Menu
-            </button>
-          </div>
-        </div>
-      </div>
+    <nav className="fixed bottom-0 inset-x-0 z-50 border-t border-white/10 bg-black/80 backdrop-blur-xl">
+      <ul className="mx-auto flex max-w-5xl items-center justify-between gap-1 px-2 py-3 text-[10px] uppercase tracking-wide text-stone-400">
+        {navLinks.map((link) => (
+          <li key={link.path} className="flex-1">
+            <Link
+              href={link.path}
+              className={`flex w-full flex-col items-center rounded-lg px-1 py-1.5 transition ${
+                isActive(link.path)
+                  ? 'text-amber-300 shadow-[inset_0_2px_0_0_#fcd34d]'
+                  : 'hover:text-stone-200'
+              }`}
+            >
+              <span className="mb-1 text-base leading-none">{link.icon}</span>
+              <span>{link.label}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 }

@@ -1,91 +1,47 @@
-import Link from 'next/link';
-
 export default function Home() {
-  const features = [
-    {
-      href: '/event-schedule',
-      title: 'Event Schedule',
-      description: 'View the performance program and event timeline',
-      icon: '📅',
-    },
-    {
-      href: '/lucky-draw',
-      title: 'Lucky Draw Prize',
-      description: 'Track and display information about lucky draw prizes',
-      icon: '🎁',
-    },
-    {
-      href: '/photos',
-      title: 'Photo Gallery',
-      description: 'Browse photos from the event',
-      icon: '📸',
-    },
-    {
-      href: '/translation',
-      title: 'Live Translation',
-      description: 'Real-time translation for attendees',
-      icon: '🌐',
-    },
-    {
-      href: '/seating-plan',
-      title: 'Seating Plan',
-      description: 'View your assigned seating arrangement',
-      icon: '💺',
-    },
-  ];
-
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-4">Annual Dinner 2026</h1>
-          <p className="text-xl opacity-90">
-            Join us for an elegant evening of celebration and connection
-          </p>
-          <div className="mt-4 text-gray-200">
-            <p>📍 Venue Details Coming Soon</p>
-            <p>⏰ Mark Your Calendar</p>
-          </div>
-        </div>
-      </section>
+    <main className="relative min-h-screen overflow-hidden pb-24">
+      <div className="absolute inset-0 -z-20 overflow-hidden">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="h-full w-full object-cover opacity-60"
+        >
+          <source
+            src="https://assets.mixkit.co/videos/preview/mixkit-awards-ceremony-light-show-13012-large.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-b from-black/30 via-black/45 to-[#0a0a0a]" />
 
-      {/* Features Grid */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 text-gray-900">
-            Event Features
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {features.map((feature) => (
-              <Link
-                key={feature.href}
-                href={feature.href}
-                className="group bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 p-6 hover:-translate-y-2"
-              >
-                <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Event Info Section */}
-      <section className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center text-gray-900">
-            Welcome to Our Annual Celebration
-          </h2>
-          <p className="text-center text-gray-700 max-w-2xl mx-auto text-lg leading-relaxed">
-            This year's annual dinner promises to be our most memorable yet. With exciting
-            performances, interactive activities, and networking opportunities, we look
-            forward to celebrating together. Use the navigation above to explore event
-            details, check your seating arrangement, and access translation services.
+      <section className="section-shell flex items-center justify-center px-6">
+        <div className="fade-up mx-auto w-full max-w-4xl text-center">
+          <img
+            src="https://www.cash.org.hk/wp-content/themes/cash/images/logo.png"
+            alt="CASH logo"
+            className="mx-auto mb-8 w-24 brightness-0 invert md:w-32"
+          />
+          <h1
+            className="gold-gradient mb-4 text-5xl leading-tight md:text-7xl"
+            style={{ fontFamily: "var(--font-display), serif" }}
+          >
+            CASH Annual Dinner
+          </h1>
+          <p className="mb-5 text-lg uppercase tracking-[0.34em] text-stone-200/90 md:text-xl">
+            Golden Sail Music Awards 2026
           </p>
+          <p className="mx-auto max-w-2xl text-stone-300">
+            Welcome to tonight&apos;s in-event portal. Tap the bottom navigation to view the
+            performance timeline, lucky draw prizes, live photos, translation support,
+            and seating map.
+          </p>
+
+          <div className="mx-auto mt-10 h-10 w-10 animate-bounce rounded-full border border-amber-400/60 text-amber-300">
+            <span className="flex h-full items-center justify-center text-lg">⌄</span>
+          </div>
         </div>
       </section>
     </main>

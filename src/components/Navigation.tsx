@@ -11,9 +11,9 @@ export default function Navigation() {
   const navLinks = [
     { path: '/', label: 'Home', icon: '⌂' },
     { path: '/event-schedule', label: 'Schedule', icon: '◷' },
+    { path: '/prize-candidates', label: 'Awards', icon: '♫' },
     { path: '/lucky-draw', label: 'Lucky', icon: '✦' },
     { path: '/photos', label: 'Photos', icon: '▣' },
-    { path: '/translation', label: 'Translate', icon: '文' },
     { path: '/seating-plan', label: 'Seats', icon: '◎' },
   ];
 

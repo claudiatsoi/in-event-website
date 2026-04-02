@@ -4,16 +4,81 @@ const officialPdf =
 const highlights = [
   {
     title: '候選作品 Nominee Works',
-    description: 'Quick access to the official booklet for the shortlisted songs, works, and award references.',
+    description: 'Selected nominee details are shown directly below for quick mobile viewing during the event.',
   },
   {
     title: '演出者 Performer Info',
-    description: 'Review the performer and presentation details prepared for the Golden Sail Music Awards ceremony.',
+    description: 'Key performer and production notes are now native on the page, not only inside the PDF.',
   },
   {
-    title: '典禮現場參考 Ceremony Guide',
-    description: 'Keep the PDF open during the dinner for a handy mobile reference while awards are announced.',
+    title: '下載小冊子 Download Booklet',
+    description: 'Guests can still open or download the full official booklet anytime from this page.',
   },
+];
+
+const featuredWorks = [
+  {
+    title: '女聲與大提琴《蓮台詠嘆》',
+    subtitle: 'Soprano & Cello – The Glory of the Lotus Seat',
+    credits: [
+      '作曲 / 作詞 Composer & Lyricist: 羅永暉 Law Wing Fai',
+      '女高音 Soprano: 嚴翊樺 Margaret Yim',
+      '大提琴 Cellist: 羅詠媞 Wendy Law',
+    ],
+    description:
+      '《蓮台詠嘆》為《人淡如菊》的段落，以水月觀音端坐蓮花座上的靜觀意境，展現靈山勝水的畫面與沉思氣質。',
+  },
+  {
+    title: '《希望》 “Hope”',
+    subtitle: 'The Hong Kong Children’s Choir Intermediate 3A',
+    credits: [
+      '作曲 Composer: 羅永暉 Law Wing Fai',
+      '作詞 Lyricist: 鄭國江 Cheng Kok Kong',
+      '指揮 Conductor: 阮慧玲 Viola Yuen',
+      '鋼琴 Pianist: 劉建安 Kenneth Lau',
+      '導師 Tutor: 劉灝顯 Kelvin Lau',
+    ],
+    description:
+      '由香港兒童合唱團演繹的《希望》以明亮溫暖的歌詞與旋律，傳達和平、成長與共享光芒的願景。',
+  },
+];
+
+const performerHighlights = [
+  {
+    name: '嚴翊樺 Margaret Yim',
+    role: 'Vocalist / Music Educator',
+    description:
+      '著名聲樂家及音樂教育家，曾主演多部西洋歌劇、現代室內歌劇及羅永暉教授多套原創作品。',
+  },
+  {
+    name: '羅詠媞 Wendy Law',
+    role: 'Cellist',
+    description:
+      '曾與紐約愛樂、波士頓交響樂團及香港小交響樂團等合作演出，活躍於國際舞台。',
+  },
+  {
+    name: '阮慧玲 Viola Yuen',
+    role: 'Conductor / Composer',
+    description:
+      '活躍於作曲、編曲、指揮及合唱工作，擅長人聲創作與跨界音樂製作。',
+  },
+  {
+    name: '香港兒童合唱團 The Hong Kong Children’s Choir',
+    role: 'Featured Choir',
+    description:
+      '成立於1969年，為香港首隊兒童合唱團之一，現已成為全球規模最大的兒童合唱團之一。',
+  },
+];
+
+const finalistLineup = [
+  '馬瑋謙 DidaBoy',
+  '爵躍 Jazzclectic',
+  '陸尉俊 Vincent Luk',
+  '黃彥康 Nate Wong',
+  '朱峻樂 Jerold Chu',
+  '黃觀富 Fabien Wong',
+  '黃駿彥 Jerry Wong',
+  '孫梓文 Ken Suen',
 ];
 
 export default function PrizeCandidatesPage() {
@@ -29,8 +94,8 @@ export default function PrizeCandidatesPage() {
             Prize Candidates
           </h1>
           <p className="max-w-3xl text-stone-300">
-            Explore the official CASH booklet for the nominated works and performer information prepared for the
-            2025 Annual Dinner and Golden Sail Music Awards presentation.
+            Selected nominee and performer information is now displayed directly on the website for quick viewing,
+            while the full official booklet remains available to open or download anytime.
           </p>
 
           <div className="mt-6 flex flex-wrap gap-3">
@@ -61,11 +126,70 @@ export default function PrizeCandidatesPage() {
           ))}
         </div>
 
+        <div className="mb-8 rounded-3xl border border-amber-500/25 bg-amber-950/10 p-5 md:p-6">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="text-2xl font-semibold text-stone-100">Native Candidate Highlights</h2>
+              <p className="text-sm text-stone-400">Selected information from the official booklet, optimized for mobile reading.</p>
+            </div>
+            <span className="rounded-full border border-amber-500/30 px-3 py-1 text-xs uppercase tracking-[0.28em] text-amber-300">
+              On-page info
+            </span>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            {featuredWorks.map((work) => (
+              <article key={work.title} className="glass-card rounded-2xl border border-white/10 p-5">
+                <p className="mb-1 text-xs uppercase tracking-[0.28em] text-fuchsia-300">Featured work</p>
+                <h3 className="text-xl font-semibold text-stone-100">{work.title}</h3>
+                <p className="mb-3 text-sm text-stone-400">{work.subtitle}</p>
+                <p className="mb-4 text-sm leading-6 text-stone-300">{work.description}</p>
+                <ul className="space-y-2 text-sm text-stone-200">
+                  {work.credits.map((credit) => (
+                    <li key={credit} className="rounded-xl border border-white/8 bg-black/25 px-3 py-2">
+                      {credit}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-8 grid gap-4 lg:grid-cols-[1.3fr_0.9fr]">
+          <article className="glass-card rounded-3xl border border-white/10 p-5 md:p-6">
+            <h2 className="mb-4 text-2xl font-semibold text-stone-100">Performer Highlights</h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {performerHighlights.map((person) => (
+                <div key={person.name} className="rounded-2xl border border-white/10 bg-black/25 p-4">
+                  <p className="text-sm font-semibold text-white">{person.name}</p>
+                  <p className="mb-2 text-xs uppercase tracking-[0.22em] text-fuchsia-300">{person.role}</p>
+                  <p className="text-sm text-stone-300">{person.description}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+
+          <article className="glass-card rounded-3xl border border-white/10 p-5 md:p-6">
+            <h2 className="mb-4 text-2xl font-semibold text-stone-100">CASH Best Song Finalist Line-up</h2>
+            <ul className="space-y-2 text-sm text-stone-200">
+              {finalistLineup.map((name) => (
+                <li key={name} className="rounded-xl border border-fuchsia-500/20 bg-fuchsia-950/20 px-3 py-2">
+                  {name}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-sm text-stone-400">
+              For the full shortlist, full biographies, and complete performer notes, please use the official booklet below.
+            </p>
+          </article>
+        </div>
+
         <div className="glass-card gold-border gold-glow rounded-3xl p-3 md:p-4">
           <div className="mb-3 flex items-center justify-between gap-3 px-2">
             <div>
               <h2 className="text-xl font-semibold text-stone-100">Official Candidates Booklet</h2>
-              <p className="text-sm text-stone-400">Embedded preview for quick in-event viewing.</p>
+              <p className="text-sm text-stone-400">Embedded preview plus download access for the full booklet.</p>
             </div>
             <span className="rounded-full border border-fuchsia-500/30 px-3 py-1 text-xs uppercase tracking-[0.28em] text-fuchsia-300">
               PDF
